@@ -1,6 +1,10 @@
 package com.aircraft;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import org.json.JSONObject;
@@ -96,7 +100,16 @@ public class Helper {
 	public static String whoUpdated(){
 		return updated;
 	}
-	
+	public static String all() {
+		List<AirCraft> all = new ArrayList<AirCraft>();
+		all.addAll(largePassenger);
+		all.addAll(smallPassenger);
+		all.addAll(largeCargo);
+		all.addAll(smallCargo);
+		
+		Collections.sort(all);
+		return "";
+	}
 	public static void dequeue() {
 		if(!largePassenger.isEmpty()) {
 			AirCraft removed = largePassenger.poll();

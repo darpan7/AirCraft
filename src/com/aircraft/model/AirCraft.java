@@ -7,7 +7,7 @@ import com.aircraft.utils.TYPE;
  * @author DARPAN
  *
  */
-public class AirCraft {
+public class AirCraft implements Comparable<AirCraft>{
 	private int id;
 	private String name;
 	private TYPE type;
@@ -43,6 +43,10 @@ public class AirCraft {
 	public String toString() {
 		return "AC{" + id + ", " + (name != null ? name + ", " : "")
 				+ (type != null ? type.name() + ", " : "") + (size != null ? size.name() : "") + "}";
+	}
+	@Override
+	public int compareTo(AirCraft o) {
+		return this.id - o.id;
 	}
 
 //	public String tString() {
