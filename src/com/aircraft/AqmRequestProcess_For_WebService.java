@@ -12,17 +12,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.sun.jersey.spi.resource.Singleton;
  
 @Path("/binary")
-public class Main_For_WS {
+@Singleton
+public class AqmRequestProcess_For_WebService {
+	
+	private int counter = 0;
 	
 	@Path("/start")
 	@GET
 	@Produces("application/json")
 	public Response reboot() throws JSONException{
-		System.out.println("....");
 		Helper.reboot();
-		
+		counter = 0;
 		return Response.status(200).entity(Helper.print("start", "System started!")).build();
 	}
  
@@ -30,8 +34,7 @@ public class Main_For_WS {
 	@GET
 	@Produces("application/json")
 	public Response addAC(@PathParam("type") String type, @PathParam("size") String size) {
-		
-		Helper.enqueue(type, size, null);
+		Helper.enqueue(type, size, null, ++counter);
 		return Response.status(200).entity(Helper.print("enqueue", Helper.whoUpdated())).build();
 	}
 	
@@ -39,7 +42,7 @@ public class Main_For_WS {
 	@GET
 	@Produces("application/json")
 	public Response addAC(@PathParam("type") String type, @PathParam("size") String size, @PathParam("name") String name) {
-		Helper.enqueue(type, size, name);
+		Helper.enqueue(type, size, name, ++counter);
 		return Response.status(200).entity(Helper.print("enqueue", Helper.whoUpdated())).build();
 	}
 	
@@ -47,11 +50,7 @@ public class Main_For_WS {
 	@GET
 	@Produces("application/json")
 	public Response popAC() {
-		try {
-			return Response.status(200).entity(new JSONObject("<ctofservice>").toString(1)).build();
-		} catch (JSONException e) {
-			e.printStackTrace();
-			return Response.status(200).entity("{}").build();
-		}
+		Helper.dequeue();
+		return Response.status(200).entity(Helper.print("dequeue", Helper.whoUpdated())).build();
 	}
 }
