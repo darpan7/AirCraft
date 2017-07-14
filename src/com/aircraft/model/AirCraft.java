@@ -39,6 +39,10 @@ public class AirCraft implements Comparable<AirCraft>{
 		this.name = name;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
 	@Override
 	public String toString() {
 		return "AC{" + id + ", " + (name != null ? name + ", " : "")
@@ -47,6 +51,32 @@ public class AirCraft implements Comparable<AirCraft>{
 	@Override
 	public int compareTo(AirCraft o) {
 		return this.id - o.id;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((size == null) ? 0 : size.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AirCraft other = (AirCraft) obj;
+		if (id != other.id)
+			return false;
+		if (size != other.size)
+			return false;
+		if (type != other.type)
+			return false;
+		return true;
 	}
 
 //	public String tString() {
