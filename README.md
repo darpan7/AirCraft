@@ -34,3 +34,4 @@ I have 2 entrypoints.
 Note:
 Although, I have used List to store, I believe using my own LinkedList type class will work as well. I need to make sure when I want to add in middle, i will just change the refs. Helper class has simple implementation (first idea that came), it works as well, but changing into priority rules will change that class as well. 
 OrderJSON: Normally, JSON does not guruanteed ordering inside json text. However, i am able to make it with my custom class. 
+Test Cases: I know there are few test cases written. But I would love to finish it later. I have included test cases for major features. I have developed Rest client inside test to treat as test case for rest ws (which is bad design but its already so late to submit so I am trying to show it as much as I can with good design). 
