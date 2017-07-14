@@ -9,32 +9,17 @@ import com.aircraft.utils.SIZE;
 import com.aircraft.utils.TYPE;
 
 public class ACService {
-	public static void main(String[] args) {
-		ACService a = new ACService();
-		int id = 0;
-		a.enqueue(new AirCraft(TYPE.CARGO, SIZE.LARGE, "5", ++id));
-		a.enqueue(new AirCraft(TYPE.CARGO, SIZE.SMALL, "6", ++id));
-		a.enqueue(new AirCraft(TYPE.PASSENGER, SIZE.SMALL, "7", ++id));
-		a.enqueue(new AirCraft(TYPE.PASSENGER, SIZE.SMALL, "8", ++id));
-		a.enqueue(new AirCraft(TYPE.CARGO, SIZE.SMALL, "1", ++id));
-		a.enqueue(new AirCraft(TYPE.CARGO, SIZE.LARGE, "2", ++id));
-		a.enqueue(new AirCraft(TYPE.PASSENGER, SIZE.LARGE, "3", ++id));
-		a.enqueue(new AirCraft(TYPE.PASSENGER, SIZE.SMALL, "4", ++id));
-		for (AirCraft ac : a.queue) {
-			System.out.println("=> " + ac);
-		}
-		System.out.println(a.dequeue());
-		System.out.println(a.dequeue());
-		System.out.println(a.dequeue());
-		System.out.println(a.dequeue());
-		System.out.println(a.dequeue());
-		System.out.println(a.dequeue());
-		System.out.println(a.dequeue());
-		System.out.println(a.dequeue());
-	}
-
 	private List<AirCraft> queue = new ArrayList<AirCraft>();
 	private static int dq_counter = 0;
+//	private PriorityQueue<AirCraft> q = new PriorityQueue<AirCraft>(new Comparator<AirCraft>() {
+//		public int compare(AirCraft a, AirCraft b) {
+//			if(currentHasPriority(a, b)) {
+//				return 1;
+//			}else {
+//				return 0;
+//			}
+//		}
+//	});
 
 	public ACService() {
 
@@ -241,5 +226,29 @@ public class ACService {
 	
 	public List<AirCraft> getQ(){
 		return queue;
+	}
+	
+	public static void main(String[] args) {
+		ACService a = new ACService();
+		int id = 0;
+		a.enqueue(new AirCraft(TYPE.CARGO, SIZE.LARGE, "5", ++id));
+		a.enqueue(new AirCraft(TYPE.CARGO, SIZE.SMALL, "6", ++id));
+		a.enqueue(new AirCraft(TYPE.PASSENGER, SIZE.SMALL, "7", ++id));
+		a.enqueue(new AirCraft(TYPE.PASSENGER, SIZE.SMALL, "8", ++id));
+		a.enqueue(new AirCraft(TYPE.CARGO, SIZE.SMALL, "1", ++id));
+		a.enqueue(new AirCraft(TYPE.CARGO, SIZE.LARGE, "2", ++id));
+		a.enqueue(new AirCraft(TYPE.PASSENGER, SIZE.LARGE, "3", ++id));
+		a.enqueue(new AirCraft(TYPE.PASSENGER, SIZE.SMALL, "4", ++id));
+		for (AirCraft ac : a.queue) {
+			System.out.println("=> " + ac);
+		}
+		System.out.println(a.dequeue());
+		System.out.println(a.dequeue());
+		System.out.println(a.dequeue());
+		System.out.println(a.dequeue());
+		System.out.println(a.dequeue());
+		System.out.println(a.dequeue());
+		System.out.println(a.dequeue());
+		System.out.println(a.dequeue());
 	}
 }
