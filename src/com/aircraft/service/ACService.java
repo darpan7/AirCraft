@@ -199,11 +199,20 @@ public class ACService {
 	
 	public String print(String act, Object res) {
 		OrderedJSON json = new OrderedJSON();
-		json.put("Action", act);
-		if(res!=null) {
-			json.put("Who Updated", (res==null)?null:res.toString());
+		json.put("Request", act);
+		if("enqueue".equalsIgnoreCase(act)){
+			res = "Queue updated!";
+		}else if ("dequeue".equalsIgnoreCase(act)){
+			if(res == null){
+				res = "Queue is empty.";
+			}else{
+				res = "Deleted " + res.toString() + " from Queue.";
+			}
+		}else if ("start".equalsIgnoreCase(act)){
+			res = "Queue is reset!";
 		}
-		json.put("Queue", formatQ());
+		json.put("Result of your request", res.toString());
+		json.put("Status of Queue", formatQ());
 		
 		return json.toString(1);
 	}
@@ -218,6 +227,7 @@ public class ACService {
 			}else {
 				sb.append(", ");
 			}
+			++last;
 		}
 		sb.append("]");
 		

@@ -48,7 +48,6 @@ public class AirCraft implements Comparable<AirCraft>{
 		return "AC{" + id + ", " + (name != null ? name + ", " : "")
 				+ (type != null ? type.name() + ", " : "") + (size != null ? size.name() : "") + "}";
 	}
-	@Override
 	public int compareTo(AirCraft o) {
 		return this.id - o.id;
 	}
