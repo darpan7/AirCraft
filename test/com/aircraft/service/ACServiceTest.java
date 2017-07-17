@@ -19,8 +19,8 @@ import com.aircraft.utils.TYPE;
 public class ACServiceTest {
 	private ACService service;
 	private AirCraft a;
-	private boolean typef;
-	private boolean sizef;
+	private static boolean typef;
+	private static boolean sizef;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -91,7 +91,7 @@ public class ACServiceTest {
 		}
 		return acs;
 	}
-	public TYPE randomType() {
+	public static TYPE randomType() {
 		if(typef) {
 			typef = false;
 			return TYPE.PASSENGER;
@@ -101,7 +101,7 @@ public class ACServiceTest {
 		}
 	}
 	
-	public SIZE randomSize() {
+	public static SIZE randomSize() {
 		if(sizef) {
 			sizef = false;
 			return SIZE.LARGE;
