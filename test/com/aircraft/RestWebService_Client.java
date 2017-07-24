@@ -14,6 +14,9 @@ public class RestWebService_Client {
 	public static void main(String[] args) {
 		
 		RestWebService_Client client = new RestWebService_Client();
+		client.getDequeueResponse();
+		//client.getEnqueueResponse(10);
+		
 		client.getStartResponse();
 		client.getEnqueueResponse(10);
 		client.getDequeueResponse();

@@ -217,6 +217,15 @@ public class ACService {
 		return json.toString(1);
 	}
 	
+	public static String printError(String act, Object res) {
+		OrderedJSON json = new OrderedJSON();
+		json.put("Request", act);
+		json.put("Result of your request", res.toString());
+		json.put("Status of Queue", "Not initialized yet!");
+		
+		return json.toString(1);
+	}
+	
 	private String formatQ() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("["); int last = 1;
